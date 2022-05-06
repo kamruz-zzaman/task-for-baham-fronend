@@ -45,7 +45,7 @@ const Login = () => {
                             <FormLabel>Password</FormLabel>
                             <Input type={showPassword ? "text" : "password"} />
                             <InputRightElement width="4.5rem">
-                                <Button h="1.75rem" size="sm" onClick={() => setShowPassword(!showPassword)}>
+                                <Button bgColor='transparent' marginLeft="20px" marginBottom="-105px" h="1.75rem" size="sm" onClick={() => setShowPassword(!showPassword)}>
                                     {showPassword ? <ViewIcon /> : <ViewOffIcon />}
                                 </Button>
                             </InputRightElement>
