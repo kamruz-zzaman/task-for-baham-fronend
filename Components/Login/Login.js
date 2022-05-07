@@ -17,18 +17,26 @@ import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import axios from 'axios';
 
 const Login = () => {
+    // set error and data in state
     const [showPassword, setShowPassword] = useState(false);
     const [data, setData] = useState({ email: "", password: "" });
     const [error, setError] = useState("");
 
-
+    // onchange data adding
     const handleChange = ({ currentTarget: input }) => {
         setData({ ...data, [input.name]: input.value });
     };
+
+    // mail validation check with regex
+    const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+    // add api here
+    const url = '';
+
+    // submit login form data
     const handleSubmit = (e) => {
         e.preventDefault();
-        const url = '';
-        var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        // chceking validation
         if (data.email.match(mailformat) && data.email !== "" && data.password !== "") {
             axios.post(url, data)
                 .then((res) => {
@@ -40,6 +48,7 @@ const Login = () => {
                     setError(err);
                 })
         }
+        // handle error
         if (!data.email.match(mailformat)) {
             setError(`You have entered an invalid email address!`)
         }
@@ -92,6 +101,7 @@ const Login = () => {
                                 </Button>
                             </InputRightElement>
                         </FormControl>
+                        {/* error */}
                         {error && <Box color="red" className="error_msg">{error}</Box>}
                         <Stack spacing={10}>
                             <Button
