@@ -24,26 +24,25 @@ const Login = () => {
             align={'center'}
             justify={'center'}
             bg={useColorModeValue('gray.50', 'gray.800')}>
-            <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
+            <Stack spacing={4} mx={'auto'} width='400px' py={12} px={6} bg={useColorModeValue('white', 'gray.700')}
+                boxShadow={'lg'}>
                 <Stack align={'center'}>
-                    <Heading fontSize={'4xl'}>Sign in to your account</Heading>
+                    <Heading fontSize={'4xl'}>Welcome Back!</Heading>
                     <Text fontSize={'lg'} color={'gray.600'}>
-                        to enjoy all of our cool <Link color={'blue.400'}>features</Link> ✌️
+                        Sign in to continue.
                     </Text>
                 </Stack>
                 <Box
                     rounded={'lg'}
-                    bg={useColorModeValue('white', 'gray.700')}
-                    boxShadow={'lg'}
                     p={8}>
                     <Stack spacing={4}>
                         <FormControl id="email">
                             <FormLabel>Email address</FormLabel>
-                            <Input type="email" />
+                            <Input placeholder='john@due.com' type="email" />
                         </FormControl>
                         <FormControl id="password">
                             <FormLabel>Password</FormLabel>
-                            <Input type={showPassword ? "text" : "password"} />
+                            <Input placeholder='********' type={showPassword ? "text" : "password"} />
                             <InputRightElement width="4.5rem">
                                 <Button bgColor='transparent' marginLeft="20px" marginBottom="-105px" h="1.75rem" size="sm" onClick={() => setShowPassword(!showPassword)}>
                                     {showPassword ? <ViewIcon /> : <ViewOffIcon />}
@@ -51,14 +50,8 @@ const Login = () => {
                             </InputRightElement>
                         </FormControl>
                         <Stack spacing={10}>
-                            <Stack
-                                direction={{ base: 'column', sm: 'row' }}
-                                align={'start'}
-                                justify={'space-between'}>
-                                <Checkbox>Remember me</Checkbox>
-                                <Link color={'blue.400'}>Forgot password?</Link>
-                            </Stack>
                             <Button
+                                marginTop='20px'
                                 bg={'blue.400'}
                                 color={'white'}
                                 _hover={{
