@@ -68,12 +68,16 @@ const districtList = [
     "Jamalpur"
 ]
 const CustomerDetails = () => {
+    // error handle
     const [nameError, setNameError] = useState('');
     const [streetError, setStreetError] = useState('');
     const [zipError, setZipError] = useState('');
     const [phoneError, setPhoneError] = useState('');
+
+    // submit form data
     const handleSubmit = (e) => {
         e.preventDefault();
+        // get form data
         const formData = new FormData()
         const firstNname = e.target.firstNname.value;
         const lastName = e.target.lastName.value;
@@ -83,13 +87,20 @@ const CustomerDetails = () => {
         const birthDate = e.target.birthDate.value;
         const gender = e.target.gender.value;
         const phone = e.target.phone.value;
+
+        // validation with regex
         const nameVelidation = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/g
         const streatValidation = /[,#-\/\s\!\@\$.....]/gi;
         const postalCodeValidation = /^\d{4}$/;
         const phoneValidation = /^(?:\d{2}-\d{3}-\d{3}-\d{3}|\d{11})$/gm;
+
+        // enter here post url
         const url = '';
+
+        // checking validation
         if (firstNname.match(nameVelidation) && lastName.match(nameVelidation) && streetAddress.match(streatValidation) &&
             zipCode.match(postalCodeValidation) && zipCode.match(postalCodeValidation) && phone.match(phoneValidation)) {
+            // append all form data
             formData.append('firstNname', firstNname);
             formData.append('lastName', lastName);
             formData.append('streetAddress', streetAddress);
@@ -98,6 +109,8 @@ const CustomerDetails = () => {
             formData.append('district', district);
             formData.append('birthDate', birthDate);
             formData.append('gender', gender);
+
+            // reset error 
             document.getElementById("firstName").style.border = null;
             document.getElementById("lastName").style.border = null;
             document.getElementById("addressVal").style.border = null;
@@ -107,6 +120,8 @@ const CustomerDetails = () => {
             setStreetError('');
             setZipError('');
             setPhoneError('');
+
+            // psot form data
             axios.post(url, formData)
                 .then(res => {
                     alert("Successfuly added details")
@@ -115,8 +130,9 @@ const CustomerDetails = () => {
                     console.log(error);
                 })
         }
-        else {
 
+        // handle error
+        else {
             if (!firstNname.match(nameVelidation)) {
                 document.getElementById("firstName").style.border = "1px solid red";
                 setNameError("Name should be alphabetic charecter");
@@ -164,11 +180,13 @@ const CustomerDetails = () => {
                                     <Input id='firstName' name='firstNname' placeholder='First Name' marginRight='10px' type="text" />
                                     <Input id='lastName' name='lastName' placeholder='Last Name' type="text" />
                                 </Flex>
+                                {/* error */}
                                 {nameError ? <Box color='red'>{nameError}</Box> : null}
                             </FormControl>
                             <FormControl isRequired id="Address">
                                 <FormLabel>Customer Address</FormLabel>
                                 <Input id='addressVal' required name='streetAddress' placeholder='Street Address' type="text" />
+                                {/* error */}
                                 {streetError ? <Box color='red'>{streetError}</Box> : null}
                             </FormControl>
                             <FormControl isRequired id="City" my="10px">
@@ -186,6 +204,7 @@ const CustomerDetails = () => {
                                     <Box>
                                         <FormLabel>Postal / Zip Code</FormLabel>
                                         <Input id='zipVAlidate' required name='zipCode' placeholder='Postal / Zip code' type="text" />
+                                        {/* error */}
                                         {zipError ? <Box color='red'>{zipError}</Box> : null}
                                     </Box>
                                 </Flex>
@@ -216,6 +235,7 @@ const CustomerDetails = () => {
                                 <Box>
                                     <FormLabel>Phone</FormLabel>
                                     <Input id='phoneValidate' required name='phone' placeholder='+880 **********' type="number" />
+                                    {/* error */}
                                     {phoneError ? <Box color='red'>{phoneError}</Box> : null}
                                 </Box>
                             </FormControl>
