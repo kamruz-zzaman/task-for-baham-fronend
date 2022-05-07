@@ -5,14 +5,13 @@ import {
     FormControl,
     FormLabel,
     Input,
-    Checkbox,
     Stack,
-    Link,
     Button,
     Heading,
     Text,
     useColorModeValue,
     InputRightElement,
+    Image,
 } from '@chakra-ui/react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 
@@ -27,9 +26,10 @@ const Login = () => {
             <Stack spacing={4} mx={'auto'} width='400px' py={12} px={6} bg={useColorModeValue('white', 'gray.700')}
                 boxShadow={'lg'}>
                 <Stack align={'center'}>
+                    <Image src='https://i.ibb.co/sbQJ51M/baham-logo.webp' marginBottom="20px" alt='logo' />
                     <Heading fontSize={'4xl'}>Welcome Back!</Heading>
                     <Text fontSize={'lg'} color={'gray.600'}>
-                        Sign in to continue.
+                        Sign in to continue
                     </Text>
                 </Stack>
                 <Box
@@ -37,7 +37,7 @@ const Login = () => {
                     p={8}>
                     <Stack spacing={4}>
                         <FormControl id="email">
-                            <FormLabel>Email address</FormLabel>
+                            <FormLabel>Email</FormLabel>
                             <Input placeholder='john@due.com' type="email" />
                         </FormControl>
                         <FormControl id="password">
@@ -52,10 +52,10 @@ const Login = () => {
                         <Stack spacing={10}>
                             <Button
                                 marginTop='20px'
-                                bg={'blue.400'}
+                                bg={'#f22224'}
                                 color={'white'}
                                 _hover={{
-                                    bg: 'blue.500',
+                                    bg: '#a51416',
                                 }}>
                                 Sign in
                             </Button>
