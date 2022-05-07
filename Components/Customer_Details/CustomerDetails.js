@@ -199,7 +199,7 @@ const CustomerDetails = () => {
                                 >
                                     <Box marginRight={{ base: "10px", md: "0px" }}>
                                         <FormLabel>Date of Birth</FormLabel>
-                                        <Input required name='birthDate' width={{ base: null, md: "185px" }} type="date" />
+                                        <Input max="2021-12-31" required name='birthDate' width={{ base: null, md: "185px" }} type="date" />
                                     </Box>
                                     <Box>
                                         <FormLabel>Gender</FormLabel>

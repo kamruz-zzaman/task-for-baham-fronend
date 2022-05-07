@@ -33,7 +33,7 @@ const Login = () => {
             axios.post(url, data)
                 .then((res) => {
                     alert("login Success")
-                    localStorage.setItem('token', res.data);
+                    localStorage.setItem('data', res.data);
                     setError('');
                 })
                 .catch((err) => {
