@@ -32,6 +32,7 @@ const Login = () => {
         if (data.email.match(mailformat) && data.email !== "" && data.password !== "") {
             axios.post(url, data)
                 .then((res) => {
+                    alert("login Success")
                     localStorage.setItem('token', res.data);
                     setError('');
                 })
